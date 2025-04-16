@@ -106,6 +106,6 @@ Redirect URI: http://localhost:5173
 
 ## Configuration
 
-- Client ID: 09593f1c-13f9-428b-9178-551181799fa2
+- Client ID: [[YOUR_APP_CLIENT_ID]]
 - Redirect URI: http://localhost:5173
-- Scopes: fhirUser openid user/Patient.rs user/Observation.cs
+- Scopes: fhirUser openid user/Patient.rs user/Observation.cruds
