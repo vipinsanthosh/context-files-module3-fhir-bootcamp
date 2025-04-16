@@ -1,0 +1,101 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# SMART on FHIR Provider Application - PRD
+
+## Product Overview
+A SvelteKit-based SMART on FHIR provider application that launches from the Cerner EHR system. This application follows the SMART App Launch Framework for secure authorization and access to EHR data. The application will focus on retrieving and recording patient vital signs, enabling clinicians to efficiently view and document vitals directly within their EHR workflow.
+
+## Problem Statement
+Healthcare providers need seamless access to patient data within their EHR workflow. A standalone application that requires separate authentication creates friction and reduces adoption. Additionally, clinicians need an efficient way to review and document vital signs without switching between multiple interfaces. This application will integrate directly within the EHR workflow using SMART on FHIR standards to streamline vital signs management.
+
+## Target Users
+- Clinicians (physicians, nurses, physician assistants)
+- Other healthcare professionals with access to the Cerner EHR
+- Medical assistants responsible for recording patient vitals
+
+## Requirements
+
+### Functional Requirements
+
+#### 1. EHR Launch Flow
+- Implement SMART on FHIR EHR Launch workflow
+- Support launch from within Cerner EHR context
+- Handle authorization request/response with PKCE
+- Obtain and manage access tokens
+- Support token refresh when needed
+
+#### 2. FHIR Data Access
+- Retrieve patient context from launch parameters
+- Access relevant clinical data via FHIR API
+- Support core FHIR resources (Patient, Encounter, Observation, etc.)
+- Implement proper error handling for API requests
+
+#### 3. Patient Vitals Management
+- Retrieve and display patient vital signs (temperature, blood pressure, heart rate, respiratory rate, oxygen saturation, height, weight)
+- Present vitals in chronological order with the most recent at the top
+- Provide visual indicators for abnormal values
+- Support filtering vitals by date range and type
+- Enable searching for specific vital sign measurements
+- Allow clinicians to document new vital signs
+- Validate vital sign entries for accuracy and reasonable ranges
+- Submit new vitals to the EHR using FHIR Observation resources
+- Display confirmation of successful vital sign documentation
+- Support correction of recently documented vitals
+
+#### 4. User Interface
+- Provide responsive, intuitive interface optimized for clinical workflow
+- Display patient context consistently throughout the application
+- Support both desktop and tablet form factors used in clinical settings
+- Implement simple, efficient forms for vital sign entry
+- Include appropriate units of measurement for different vital types
+- Provide visualizations of vital sign trends over time
+
+### Non-Functional Requirements
+
+
+#### 1. Security
+- Implement OAuth 2.0 flow for authentication and authorization
+- Securely store access tokens
+- Do not persist PHI in local storage
+- Implement session timeout with appropriate warnings
+- Ensure appropriate scopes for read and write access to Observation resources
+
+#### 2. Compliance
+- Meet all SMART on FHIR implementation guidelines
+- Ensure HIPAA compliance for handling PHI
+- Follow Cerner SMART on FHIR app certification requirements
+- Use standard LOINC codes for vital sign measurements
+- Adhere to FHIR Observation resource profiles for vital signs
+
+## Technical Architecture
+
+### Authentication Flow
+1. App is launched from Cerner EHR
+2. App receives a launch parameter and EHR FHIR server base URL as iss
+3. App retrieves the EHR's SMART configuration from .well-known/smart-configuration
+4. App requests authorization code from EHR's authorization server
+5. User authentication is handled by the EHR
+6. App exchanges authorization code for access token
+7. App uses access token to make FHIR API requests
+
+### Vital Signs Data Flow
+1. App retrieves patient vitals using FHIR Observation resource with category=vital-signs filter
+2. App processes and displays vitals in a user-friendly format
+3. When submitting new vitals, app creates FHIR Observation resources with appropriate coding
+4. App validates the submission response and confirms successful documentation
+
+### Development Framework
+- SvelteKit for frontend
+- TypeScript for type safety
+- TailwindCSS for styling
+
+### API Requirements
+- GET [base]/Patient/[id] for patient information
+- GET [base]/Observation?category=vital-signs&patient=[id] for retrieving vitals
+- POST [base]/Observation for submitting new vital signs
+
+
+

@@ -1,0 +1,89 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# SMART on FHIR stand alone provider app
+
+## Instructions about dependencies and libraries 
+
+The project already contains all starter dependencies of svelte, tailwindcss, and typescript. So there is no need to reinitialize the app from scratch. Only install new libraries and dependencies required as part of the added code. Don't use any FHIR client libraries.
+
+src/
+├── lib/            # Shared components and utilities
+│   ├── components/ # Reusable Svelte components
+│   ├── server/     # Server-only code
+│   ├── types/      # TypeScript types
+│   ├── utils/      # Helper functions
+│   └── fhir/       # FHIR related utilities
+├── routes/         # SvelteKit routes (+page.svelte, +server.ts)
+├── params/         # SvelteKit parameter matchers
+└── app.html        # App template
+
+
+## Tech Stack
+
+- SvelteKit
+- TypeScript
+- Tailwind CSS
+
+## Naming Conventions
+
+- Use lowercase with dashes for directories (e.g., components/patient-card)
+- Use PascalCase for component files (e.g., PatientList.svelte)
+- Use camelCase for utility files (e.g., fhirUtils.ts)
+- Use +page.svelte for route pages
+- Use +server.ts for API endpoints
+
+
+## TypeScript Usage
+
+- Use TypeScript for all code; prefer interfaces over types
+- Avoid enums; use const objects with 'as const' assertion
+- Use proper FHIR resource types from @types/fhir
+- Use $lib alias for imports from lib directory
+- Avoid try/catch blocks unless there's good reason to translate or handle error
+- Use explicit return types for all functions
+- Implement proper type safety for form data
+
+## SvelteKit Specific
+
+- Use proper load functions (+page.server.ts)
+- Implement form actions appropriately
+- Handle server-side rendering properly
+- Use proper error pages (+error.svelte)
+- Implement proper client-side navigation
+- Use proper environment variables ($env/static/private)
+
+## State Management
+
+- Use Svelte stores for global state
+- Implement proper reactive statements
+- Use proper lifecycle methods
+- Handle subscription cleanup properly
+
+## Syntax and Formatting
+
+- Use "export function" for pure functions
+- Follow Svelte component structure (script, style, markup)
+- Use reactive declarations ($:) appropriately
+- Use proper event dispatching
+- Implement TypeScript discriminated unions where needed
+
+## UI and Styling
+
+- Use Tailwind CSS for styling
+- Implement responsive design patterns
+- Follow healthcare UI/UX best practices
+- Consider accessibility requirements
+- Use proper loading states
+- Implement proper error states
+
+
+## FHIR Integration
+
+- Use proper FHIR resource types
+- Implement proper FHIR search parameters
+- Handle FHIR versioning appropriately
+- Implement proper FHIR validation
+- Use proper FHIR operations

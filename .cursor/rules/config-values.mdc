@@ -1,0 +1,12 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Following app config values 
+
+Client ID of the SMART on FHIR app - 09593f1c-13f9-428b-9178-551181799fa2
+
+REDIRECT URI - http://localhost:5173
+
+Scopes - fhirUser openid user/Patient.rs user/Observation.cruds
