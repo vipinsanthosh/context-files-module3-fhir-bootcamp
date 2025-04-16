@@ -5,7 +5,7 @@ alwaysApply: true
 ---
 # Following app config values 
 
-Client ID of the SMART on FHIR app - [[YOUR_APP_ID]]
+Client ID of the SMART on FHIR app - [[YOUR_APP_CLIENT_ID]]
 
 REDIRECT URI - http://localhost:5173
 
