@@ -108,4 +108,4 @@ Redirect URI: http://localhost:5173
 
 - Client ID: [[YOUR_APP_CLIENT_ID]]
 - Redirect URI: http://localhost:5173
-- Scopes: fhirUser openid user/Patient.rs user/Observation.cruds
+- Scopes: fhirUser openid user/Patient.rs user/Observation.cruds launch

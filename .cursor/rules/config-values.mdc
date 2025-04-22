@@ -9,4 +9,4 @@ Client ID of the SMART on FHIR app - [[YOUR_APP_CLIENT_ID]]
 
 REDIRECT URI - http://localhost:5173
 
-Scopes - fhirUser openid user/Patient.rs user/Observation.cruds
+Scopes - fhirUser openid user/Patient.rs user/Observation.cruds launch
