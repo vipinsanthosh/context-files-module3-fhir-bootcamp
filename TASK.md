@@ -17,6 +17,7 @@ Redirect URI: http://localhost:5173
   - [ ] Capture the launch id and iss from the launch URL
   - [ ] Make sure to save iss in local storage
   - [ ] Set up authorization request handling with PKCE
+  - [ ] use pkce-challenge library to generate code_verifier and code_challenge
   - [ ] Implement token exchange
   - [ ] Store and manage access tokens
 
